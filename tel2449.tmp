@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://bf0valkd17hx7"]
+
+[ext_resource type="Texture2D" uid="uid://blvdkdrfdnveu" path="res://assets/fundo.png" id="1_e8e87"]
+[ext_resource type="Texture2D" uid="uid://dy43n73oa1onh" path="res://assets/inRED.png" id="2_35tan"]
+[ext_resource type="Texture2D" uid="uid://c77uhhrd2ce5s" path="res://assets/inBLUE.png" id="3_scgm3"]
+[ext_resource type="Texture2D" uid="uid://taohbw7kw4ix" path="res://assets/inYEL.png" id="4_ckkfn"]
+[ext_resource type="Texture2D" uid="uid://ch5d5jx10ijax" path="res://assets/outRED.png" id="5_7vfdl"]
+[ext_resource type="Texture2D" uid="uid://hs3c6vucs4dm" path="res://assets/outBLUE.png" id="6_hqami"]
+[ext_resource type="Texture2D" uid="uid://dxjvoimkoay83" path="res://assets/outYEL.png" id="7_3qsde"]
+[ext_resource type="Texture2D" uid="uid://cngc81a4gwsyy" path="res://assets/caixaDIREITA.png" id="8_kxxrp"]
+[ext_resource type="Script" path="res://tomada_colisao.gd" id="9_87p35"]
+[ext_resource type="Texture2D" uid="uid://4ma3s0nrkte6" path="res://assets/tomada.png" id="9_brfee"]
+[ext_resource type="Script" path="res://script/interruptor.gd" id="11_afb7k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1b304"]
+size = Vector2(239, 239.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72twb"]
+size = Vector2(73, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxsmp"]
+size = Vector2(126, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eprar"]
+size = Vector2(261.5, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71dhw"]
+size = Vector2(263, 238)
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = [416.0, 1536.0, 1793.0, 573.0]
+metadata/_edit_horizontal_guides_ = [125.0, 365.0, 429.0, 669.0, 736.0, 976.0]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_e8e87")
+
+[node name="REDin" type="Area2D" parent="."]
+
+[node name="inRED" type="Sprite2D" parent="REDin"]
+position = Vector2(246, 231)
+texture = ExtResource("2_35tan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="REDin"]
+position = Vector2(296.5, 244.75)
+shape = SubResource("RectangleShape2D_1b304")
+
+[node name="inBLUE" type="Sprite2D" parent="."]
+position = Vector2(246, 536)
+texture = ExtResource("3_scgm3")
+
+[node name="inYEL" type="Sprite2D" parent="."]
+position = Vector2(246, 842)
+texture = ExtResource("4_ckkfn")
+
+[node name="outRED" type="Sprite2D" parent="."]
+position = Vector2(1662, 858)
+texture = ExtResource("5_7vfdl")
+
+[node name="outBLUE" type="Sprite2D" parent="."]
+position = Vector2(1666, 247)
+texture = ExtResource("6_hqami")
+
+[node name="outYEL" type="Sprite2D" parent="."]
+position = Vector2(1666, 550)
+texture = ExtResource("7_3qsde")
+
+[node name="out3" type="Area2D" parent="."]
+script = ExtResource("11_afb7k")
+
+[node name="bRED2" type="Sprite2D" parent="out3"]
+position = Vector2(1411, 842)
+texture = ExtResource("8_kxxrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="out3"]
+position = Vector2(1294.5, 852)
+shape = SubResource("RectangleShape2D_72twb")
+
+[node name="tomadaColisao" type="Area2D" parent="."]
+script = ExtResource("9_87p35")
+
+[node name="tomada" type="Sprite2D" parent="tomadaColisao"]
+position = Vector2(536, 851)
+texture = ExtResource("9_brfee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tomadaColisao"]
+position = Vector2(528, 850.5)
+shape = SubResource("RectangleShape2D_bxsmp")
+
+[node name="out2" type="Area2D" parent="."]
+
+[node name="box2" type="Sprite2D" parent="out2"]
+position = Vector2(1411, 535)
+texture = ExtResource("8_kxxrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="out2"]
+position = Vector2(1407.75, 549.5)
+shape = SubResource("RectangleShape2D_eprar")
+
+[node name="out1" type="Area2D" parent="."]
+
+[node name="box1" type="Sprite2D" parent="out1"]
+position = Vector2(1411, 231)
+texture = ExtResource("8_kxxrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="out1"]
+position = Vector2(1408.5, 244)
+shape = SubResource("RectangleShape2D_71dhw")
+
+[connection signal="area_entered" from="out3" to="out3" method="_on_area_entered"]
+[connection signal="area_entered" from="tomadaColisao" to="tomadaColisao" method="_on_area_entered"]

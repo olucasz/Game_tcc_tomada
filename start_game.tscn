@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpu3hac67djge"]
+
+[ext_resource type="Texture2D" uid="uid://dpm4xqpnwr7ob" path="res://assets/Start-game-page.png" id="1_2u44n"]
+[ext_resource type="Texture2D" uid="uid://b2uawkw1mwfh" path="res://assets/jogar_BUT.png" id="2_2866f"]
+[ext_resource type="Script" path="res://script/start_game.gd" id="3_nma0p"]
+
+[sub_resource type="Animation" id="Animation_oxwpi"]
+resource_name = "button_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+
+[sub_resource type="Animation" id="Animation_nsj1t"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8vhav"]
+resource_name = "button_down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.045, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.225591, 0.5977)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.045, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.225591, 0.5977)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifsy2"]
+_data = {
+"RESET": SubResource("Animation_nsj1t"),
+"button_down": SubResource("Animation_8vhav"),
+"button_up": SubResource("Animation_oxwpi")
+}
+
+[node name="start_game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_2u44n")
+
+[node name="start_game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 662.0
+offset_right = 1232.0
+offset_bottom = 857.0
+pivot_offset = Vector2(255, 100)
+focus_mode = 0
+icon = ExtResource("2_2866f")
+flat = true
+script = ExtResource("3_nma0p")
+
+[node name="animacao2" type="AnimationPlayer" parent="start_game"]
+libraries = {
+"": SubResource("AnimationLibrary_ifsy2")
+}
+
+[connection signal="pressed" from="start_game" to="start_game" method="_on_pressed"]

@@ -1,0 +1,240 @@
+[gd_scene load_steps=15 format=3 uid="uid://ly12878upy42"]
+
+[ext_resource type="Texture2D" uid="uid://dgyslv8r1du37" path="res://assets/bg-GAMEOVER.png" id="1_eejsx"]
+[ext_resource type="Script" path="res://game_over.gd" id="1_obaf2"]
+[ext_resource type="Texture2D" uid="uid://dkca4rjub7xsr" path="res://assets/game_over/WIDGET.png" id="2_u7sl8"]
+[ext_resource type="Texture2D" uid="uid://chplww37osusq" path="res://assets/game_over/but_restart.png" id="3_5qmic"]
+[ext_resource type="Script" path="res://script/restart_but.gd" id="4_rg4c2"]
+[ext_resource type="Texture2D" uid="uid://sk6nxx3v3lum" path="res://assets/game_over/parab1_widget.png" id="5_j16bv"]
+[ext_resource type="Texture2D" uid="uid://dmhfu1bhirjvv" path="res://assets/game_over/quase_widget.png" id="6_nsyp2"]
+
+[sub_resource type="Animation" id="Animation_oxwpi"]
+resource_name = "button_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+
+[sub_resource type="Animation" id="Animation_nsj1t"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8vhav"]
+resource_name = "button_down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.045, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.225591, 0.5977)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.045, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.225591, 0.5977)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifsy2"]
+_data = {
+"RESET": SubResource("Animation_nsj1t"),
+"button_down": SubResource("Animation_8vhav"),
+"button_up": SubResource("Animation_oxwpi")
+}
+
+[sub_resource type="Animation" id="Animation_xw5n8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("3_estrelas:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("restart_but:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_58hl8"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("3_estrelas:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("restart_but:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlsmu"]
+_data = {
+"RESET": SubResource("Animation_xw5n8"),
+"fade_in": SubResource("Animation_58hl8")
+}
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obaf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_eejsx")
+
+[node name="3_estrelas" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 559.0
+offset_top = 185.0
+offset_right = 1326.0
+offset_bottom = 914.0
+texture = ExtResource("2_u7sl8")
+
+[node name="1_estrelas" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 559.0
+offset_top = 185.0
+offset_right = 1326.0
+offset_bottom = 916.0
+texture = ExtResource("5_j16bv")
+
+[node name="0_estrelas" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 559.0
+offset_top = 185.0
+offset_right = 1326.0
+offset_bottom = 914.0
+texture = ExtResource("6_nsyp2")
+
+[node name="restart_but" type="Button" parent="."]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 695.0
+offset_right = 1047.0
+offset_bottom = 918.0
+pivot_offset = Vector2(110, 100)
+focus_mode = 0
+icon = ExtResource("3_5qmic")
+flat = true
+script = ExtResource("4_rg4c2")
+
+[node name="animacao1" type="AnimationPlayer" parent="restart_but"]
+libraries = {
+"": SubResource("AnimationLibrary_ifsy2")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jlsmu")
+}
+autoplay = "fade_in"
+
+[connection signal="pressed" from="restart_but" to="restart_but" method="_on_pressed"]
