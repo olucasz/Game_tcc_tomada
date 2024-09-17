@@ -1,33 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpu3hac67djge"]
+[gd_scene load_steps=9 format=3 uid="uid://cpu3hac67djge"]
 
 [ext_resource type="Texture2D" uid="uid://dpm4xqpnwr7ob" path="res://assets/Start-game-page.png" id="1_2u44n"]
 [ext_resource type="Texture2D" uid="uid://b2uawkw1mwfh" path="res://assets/jogar_BUT.png" id="2_2866f"]
 [ext_resource type="Script" path="res://script/start_game.gd" id="3_nma0p"]
-
-[sub_resource type="Animation" id="Animation_oxwpi"]
-resource_name = "button_up"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.188372, 0.7)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.188372, 0.7)
-}
+[ext_resource type="AudioStream" uid="uid://da81hu2xdqdgs" path="res://assets/audios/Video Game Jump Sound Effect 4.wav" id="4_barwv"]
 
 [sub_resource type="Animation" id="Animation_nsj1t"]
 length = 0.001
@@ -79,6 +55,31 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.225591, 0.5977)
 }
 
+[sub_resource type="Animation" id="Animation_oxwpi"]
+resource_name = "button_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.14, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.188372, 0.7)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifsy2"]
 _data = {
 "RESET": SubResource("Animation_nsj1t"),
@@ -114,5 +115,9 @@ script = ExtResource("3_nma0p")
 libraries = {
 "": SubResource("AnimationLibrary_ifsy2")
 }
+
+[node name="inicio_but" type="AudioStreamPlayer" parent="start_game"]
+stream = ExtResource("4_barwv")
+volume_db = -5.818
 
 [connection signal="pressed" from="start_game" to="start_game" method="_on_pressed"]

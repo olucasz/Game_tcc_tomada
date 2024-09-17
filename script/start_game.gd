@@ -1,5 +1,5 @@
 extends Button
-
+@onready var inicio_but = $inicio_but
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	$animacao2.play("button_down")	
+	inicio_but.play()
 	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://telaPrincipal.tscn")

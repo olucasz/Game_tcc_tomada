@@ -12,6 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	$animacao1.play("button_up")
+	$animacao1.play("button_down")
 	await get_tree().create_timer(0.2).timeout
-	get_tree().change_scene_to_file("res://telaPrincipal.tscn")
+	get_tree().change_scene_to_file("res://start_game.tscn")

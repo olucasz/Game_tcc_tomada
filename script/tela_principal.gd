@@ -17,6 +17,10 @@ var tomadinha3 = Area2D
 var tomadinhaInicial = Vector2()
 var tomadinhaInicial2 = Vector2()
 var tomadinhaInicial3 = Vector2()
+@onready var musica_de_fundo = $acerto
+@onready var acerto_som = $acerto
+@onready var erro_som = $erro
+
 #var cabo_incio = Vector2(-150, 600)
 var diferença = Vector2(164,-12)
 
@@ -58,14 +62,13 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	atualizaCabo()
-	
-		
+
 func atualizaCabo():
 	if tomadinha.position != tomadinhaInicial:
 		var off1 = Vector2(597,240)
 		var teste = tomadinha.position - off1
 		cabo_1.points[1] = teste
-	
+
 	if tomadinha2.position != tomadinhaInicial2:
 		var off2 = Vector2(597,545)
 		var teste2 = tomadinha2.position - off2
@@ -75,22 +78,18 @@ func atualizaCabo():
 		var off3 = Vector2(597,850)
 		var teste3 = tomadinha3.position - off3
 		cabo_3.points[1] = teste3
-		
+
 func embaralhar_caixas():
 	posicao_caixa.shuffle()
 
 	for i in range(caixas.size()):
 		caixas[i].position = posicao_caixa[i]
-# Função para atualizar o ponto 1 do Line2D
-	
+
 func _on_tomadinha_body_entered(body: Node2D) -> void:
 	if body.name == "box":
 		if t1 == false:
 			verificar_conexao1(body,$tomadinha)
-			print("bateu na box")
 			t1 = true
-			print("caixa 1 ja era")
-			print(t1)
 	elif body.name == "box2":
 		if t2 == false:
 			verificar_conexao1(body,$tomadinha)
@@ -99,7 +98,7 @@ func _on_tomadinha_body_entered(body: Node2D) -> void:
 		if t3 == false:
 			verificar_conexao1(body,$tomadinha)
 			t3 = true
-		
+
 func _on_tomadinha_2_body_entered(body: Node2D) -> void:
 	if body.name == "box":
 		if t1 == false:
@@ -189,11 +188,13 @@ func atualizar_lampada(caixa: Node2D, tentativa:bool):
 	if tentativa == true:
 		verde.visible = true
 		luz_verde += 1
+		acerto_som.play()
 		verifica_fim(luz_verde, luz_verm)
 		#verifica_fim(contador)
 	else:
 		vermelha.visible = true
 		luz_verm += 1
+		erro_som.play(8.78)
 		verifica_fim(luz_verde, luz_verm)
 		#verifica_fim(contador)
 		
@@ -202,6 +203,6 @@ func verifica_fim(verde: int, verm:int):
 	print(verde)
 	print(verm)
 	if ascesas >= luzes_total:
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 		Global.luz_verde = luz_verde
 		get_tree().change_scene_to_file("res://game_over.tscn")  # Altera para a nova cena

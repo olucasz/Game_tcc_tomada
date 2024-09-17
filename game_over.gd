@@ -12,6 +12,7 @@ func _ready() -> void:
 	estrelas_0 = $"0_estrelas"
 	
 	verifica_estrelas(Global.luz_verde)
+	$aplausos.play(0.50)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

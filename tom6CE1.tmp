@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mvsqt31i1muf"]
+
+[ext_resource type="Script" path="res://script/tomadinha.gd" id="1_by5gx"]
+[ext_resource type="Texture2D" uid="uid://4ma3s0nrkte6" path="res://assets/tomada.png" id="1_vbqvm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcand"]
+radius = 53.0212
+
+[node name="tomadinha" type="Area2D"]
+script = ExtResource("1_by5gx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vbqvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0.5)
+shape = SubResource("CircleShape2D_xcand")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
